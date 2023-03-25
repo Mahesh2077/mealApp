@@ -1,16 +1,16 @@
-// first let's make a favourites meal array if its their in the local storage
+// making a favourites meal array if its their in the local storage
 if (localStorage.getItem("favouritesList") == null) {
   localStorage.setItem("favouritesList", JSON.stringify([]));
 }
 
-// its fetch meals from api and return it
+// fetching meals from api and return it
 async function fetchMealsFromApi(url,value) {
   const response=await fetch(`${url+value}`);
   const meals=await response.json();
   return meals;
 }
 
-// its show's all meals card in main acording to search input value
+// showing all meals card in main acording to search input value
 function showMealList(){
   let inputValue = document.getElementById("my-search").value;
   let arr=JSON.parse(localStorage.getItem("favouritesList"));
@@ -74,7 +74,7 @@ function showMealList(){
   });
 }
 
-//its shows full meal details in main
+//meal details page
 async function showMealDetails(id) {
   let url="https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
   let html="";
@@ -104,7 +104,7 @@ async function showMealDetails(id) {
   document.getElementById("main").innerHTML=html;
 }
 
-// its shows all favourites meals in favourites body
+// showing all favourites meals in favourites body
 async function showFavMealList() {
   let arr=JSON.parse(localStorage.getItem("favouritesList"));
   let url="https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
@@ -145,7 +145,7 @@ async function showFavMealList() {
   document.getElementById("favourites-body").innerHTML=html;
 }
 
-//its adds and remove meals to favourites list
+//adding and removing meals from favourites list
 function addRemoveToFavList(id) {
   let arr=JSON.parse(localStorage.getItem("favouritesList"));
   let contain=false;
